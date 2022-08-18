@@ -6,23 +6,6 @@ export const BORDER_IMG_REPEAT_VALUES = [
   { value: "inherit", label: "Inherit" },
 ]
 
-export const CHECKBOX_LABELS = ["top", "right", "bottom", "left"]
-
-export const Items = [
-  {
-    name: "top",
-    isChecked: false,
-  },
-  {
-    name: "right",
-    isChecked: false,
-  },
-  {
-    name: "bottom",
-    isChecked: false,
-  },
-  {
-    name: "left",
-    isChecked: false,
-  },
-]
+export const WIDTH_INITIAL_VALUE = 20
+export const OUTSET_INITIAL_VALUE = 0
+export const DEGREE_INITIAL_VALUE = 0

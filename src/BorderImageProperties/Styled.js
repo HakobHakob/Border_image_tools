@@ -24,9 +24,8 @@ export const Img = styled.img`
 export const LeftContainer = styled(GeneralStyles)`
   border-style: solid;
   border-width: 20px;
-  border-image-width: 20px;
+  border-image-width: ${({ borderImgWidth }) => borderImgWidth}px;
   border-image-source: url(${babol});
-  border-image-outset: 0;
   border-image-repeat: stretch;
   border-image-slice: 100;
 `
@@ -36,7 +35,7 @@ export const CenterContainer = styled(GeneralStyles)`
   border-style: solid;
   border-width: 20px;
   border-image: linear-gradient(
-      45deg,
+    ${({ linearGradientDeg }) => linearGradientDeg}deg,
       red,
       yellow,
       lime,
@@ -45,7 +44,7 @@ export const CenterContainer = styled(GeneralStyles)`
       magenta,
       red
     )
-    1 stretch;
+    1 round;
 `
 
 /*1 0 stretch,stretch,round,space,repeat*/
@@ -57,6 +56,7 @@ export const RightContainer = styled(GeneralStyles)`
   border-width: 20px;
   border-image-source: url(${florid});
   border-image-slice: 40;
+  border-image-outset: ${({ borderImgOutset }) => borderImgOutset};
 `
 /* border-image: repeating-linear-gradient(30deg, lime, aqua, blue, magenta 3px)
   30; */
@@ -82,10 +82,6 @@ export const CheckBox = styled.input.attrs((props) => ({
   cursor: pointer;
 `
 
-export const CheckBoxAll = styled(CheckBox)`
-  margin-right: 0.5em;
-`
-
 export const Paragraph = styled.p`
   font-size: 15px;
 `
@@ -107,7 +103,7 @@ export const ToolBoard = styled(BorderImageTool)`
 
 export const BoprderImgWidthInput = styled.input.attrs((props) => ({
   type: "Range",
-  min: "0",
+  min: "20",
   max: "100",
   size: props.size || "10px",
 }))`
@@ -116,7 +112,6 @@ export const BoprderImgWidthInput = styled.input.attrs((props) => ({
   font-size: 17px;
   border: none;
   border-radius: 3px;
-  padding: ${(props) => props.size};
   outline: none;
 `
 export const BoprderImgOutsetInput = styled.input.attrs((props) => ({
@@ -129,7 +124,18 @@ export const BoprderImgOutsetInput = styled.input.attrs((props) => ({
   font-size: 10px;
   border: 2px solid palevioletred;
   border-radius: 3px;
-  padding: ${(props) => props.size};
+  outline: none;
+`
+export const LinearGradientInput = styled.input.attrs((props) => ({
+  type: "Range",
+  min: "0",
+  max: "360",
+  size: props.size || "10px",
+}))`
+  cursor: pointer;
+  font-size: 10px;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
   outline: none;
 `
 
