@@ -34,6 +34,7 @@ export const LeftContainer = styled(GeneralStyles)`
 export const CenterContainer = styled(GeneralStyles)`
   border-style: solid;
   border-width: 20px;
+  border-image-slice: 40 ;
   border-image: linear-gradient(
     ${({ linearGradientDeg }) => linearGradientDeg}deg,
       red,
@@ -47,7 +48,7 @@ export const CenterContainer = styled(GeneralStyles)`
     1 round;
 `
 
-/*1 0 stretch,stretch,round,space,repeat*/
+/*1 0 inherit,stretch,round,space,repeat*/
 /* border-image: radial-gradient(rgb(0, 143, 104), rgb(250, 224, 66)) 1; */
 /* border-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red) 1; */
 
@@ -55,7 +56,7 @@ export const RightContainer = styled(GeneralStyles)`
   border-style: solid;
   border-width: 20px;
   border-image-source: url(${florid});
-  border-image-slice: 40;
+  border-image-slice: ${({ borderImgSlice }) => borderImgSlice};
   border-image-outset: ${({ borderImgOutset }) => borderImgOutset};
 `
 /* border-image: repeating-linear-gradient(30deg, lime, aqua, blue, magenta 3px)
@@ -69,6 +70,7 @@ export const BorderImageTool = styled.div`
   text-transform: uppercase;
   padding: 10px;
   margin: 10px;
+ 
 `
 
 export const CheckBox = styled.input.attrs((props) => ({
@@ -99,11 +101,11 @@ export const Li = styled.li`
 `
 export const ToolBoard = styled(BorderImageTool)`
   border: 1px solid black;
+  width:250px;
 `
 
 export const BoprderImgWidthInput = styled.input.attrs((props) => ({
   type: "Range",
-  min: "20",
   max: "100",
   size: props.size || "10px",
 }))`
@@ -118,6 +120,18 @@ export const BoprderImgOutsetInput = styled.input.attrs((props) => ({
   type: "Range",
   min: "0",
   max: "3",
+  size: props.size || "10px",
+}))`
+  cursor: pointer;
+  font-size: 10px;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+  outline: none;
+`
+export const BoprderImgSliceInput = styled.input.attrs((props) => ({
+  type: "Range",
+  min: "5",
+  max: "100",
   size: props.size || "10px",
 }))`
   cursor: pointer;

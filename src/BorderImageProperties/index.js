@@ -6,11 +6,13 @@ import { BORDER_IMG_REPEAT_VALUES } from "./Constants"
 import { BorderImgWidth } from "./BorderImgWidth"
 import { BorderImgOutset } from "./BorderImageOutset"
 import { LinearGradientDeg } from "./LinearGradientDegree"
+import { BorderImgSlice } from "./BorderImgSlice"
 
 import {
   WIDTH_INITIAL_VALUE,
   OUTSET_INITIAL_VALUE,
   DEGREE_INITIAL_VALUE,
+  SLICE_INITIAL_VALUE,
 } from "./Constants"
 
 export const Container = () => {
@@ -18,6 +20,7 @@ export const Container = () => {
   const [borderImgOutset, setBorderImgOutset] = useState(OUTSET_INITIAL_VALUE)
   const [linearGradientDeg, setLinearGradientDeg] =
     useState(DEGREE_INITIAL_VALUE)
+  const [borderImgSlice, setBorderImgSlice] = useState(SLICE_INITIAL_VALUE)
 
   return (
     <Styled.Container>
@@ -28,7 +31,10 @@ export const Container = () => {
         <Styled.CenterContainer linearGradientDeg={linearGradientDeg}>
           <Styled.Img src={footballer} alt="alt" />
         </Styled.CenterContainer>
-        <Styled.RightContainer borderImgOutset={borderImgOutset}>
+        <Styled.RightContainer
+          borderImgSlice={borderImgSlice}
+          borderImgOutset={borderImgOutset}
+        >
           <Styled.Img src={baby} alt="alt" />
         </Styled.RightContainer>
       </Styled.ViewBoard>
@@ -38,18 +44,21 @@ export const Container = () => {
           borderImgWidth={borderImgWidth}
           setBorderImgWidth={setBorderImgWidth}
         />
-        <Styled.BorderImageTool>
-          <BorderImgOutset
-            borderImgOutset={borderImgOutset}
-            setBorderImgOutset={setBorderImgOutset}
-          />
-        </Styled.BorderImageTool>
-        <Styled.BorderImageTool>
-          <LinearGradientDeg
-            linearGradientDeg={linearGradientDeg}
-            setLinearGradientDeg={setLinearGradientDeg}
-          />
-        </Styled.BorderImageTool>
+
+        <BorderImgOutset
+          borderImgOutset={borderImgOutset}
+          setBorderImgOutset={setBorderImgOutset}
+        />
+
+        <BorderImgSlice
+          borderImgSlice={borderImgSlice}
+          setBorderImgSlice={setBorderImgSlice}
+        />
+
+        <LinearGradientDeg
+          linearGradientDeg={linearGradientDeg}
+          setLinearGradientDeg={setLinearGradientDeg}
+        />
 
         <Styled.BorderImageTool>
           <Styled.Paragraph>repeat</Styled.Paragraph>
