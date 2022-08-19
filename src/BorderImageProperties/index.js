@@ -35,16 +35,22 @@ export const Container = () => {
         <Styled.LeftContainer
           borderImgRepeat={borderImgValue}
           borderImgWidth={borderImgWidth}
+          borderImgSlice={borderImgSlice}
+          borderImgOutset={borderImgOutset}
         >
           <Styled.Img src={baby} alt="alt" />
         </Styled.LeftContainer>
+
+
+
         <Styled.CenterContainer linearGradientDeg={linearGradientDeg}>
           <Styled.Img src={footballer} alt="alt" />
         </Styled.CenterContainer>
         <Styled.RightContainer
-          borderImgRepeat={borderImgValue}
-          borderImgSlice={borderImgSlice}
-          borderImgOutset={borderImgOutset}
+           borderImgRepeat={borderImgValue}
+           borderImgWidth={borderImgWidth}
+           borderImgSlice={borderImgSlice}
+           borderImgOutset={borderImgOutset}
         >
           <Styled.Img src={baby} alt="alt" />
         </Styled.RightContainer>

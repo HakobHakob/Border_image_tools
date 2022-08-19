@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import babol from "./Img/babol.jpg"
-import florid from "./Img/florid.jpg"
+import florid from "./Img/florid-3.jpg"
 
 export const GeneralStyles = styled.div`
   display: flex;
@@ -23,11 +23,12 @@ export const Img = styled.img`
 `
 export const LeftContainer = styled(GeneralStyles)`
   border-style: dotted;
-  border-width: 20px;
-  border-image-width: ${({ borderImgWidth }) => borderImgWidth}px;
+  border-width: 20px; 
   border-image-source: url(${babol});
   border-image-repeat: ${({ borderImgRepeat }) => borderImgRepeat};
-  border-image-slice: 100;
+  border-image-slice: ${({ borderImgSlice }) => borderImgSlice};
+  border-image-outset: ${({ borderImgOutset }) => borderImgOutset};
+  border-image-width: ${({ borderImgWidth }) => borderImgWidth}px;
 `
 /*border-image-slice: 100 fill;*/
 
@@ -56,9 +57,10 @@ export const RightContainer = styled(GeneralStyles)`
   border-style: solid;
   border-width: 20px;
   border-image-source: url(${florid});
+  border-image-repeat: ${({ borderImgRepeat }) => borderImgRepeat};
   border-image-slice: ${({ borderImgSlice }) => borderImgSlice};
   border-image-outset: ${({ borderImgOutset }) => borderImgOutset};
-  border-image-repeat: ${({ borderImgRepeat }) => borderImgRepeat};
+  border-image-width: ${({ borderImgWidth }) => borderImgWidth}px;
 `
 /* border-image: repeating-linear-gradient(30deg, lime, aqua, blue, magenta 3px)
   30; */
