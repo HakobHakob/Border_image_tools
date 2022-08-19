@@ -22,17 +22,17 @@ export const Img = styled.img`
   max-width: 100%;
 `
 export const LeftContainer = styled(GeneralStyles)`
-  border-style: solid;
+  border-style: dotted;
   border-width: 20px;
   border-image-width: ${({ borderImgWidth }) => borderImgWidth}px;
   border-image-source: url(${babol});
-  border-image-repeat: stretch;
+  border-image-repeat: ${({ borderImgRepeat }) => borderImgRepeat};
   border-image-slice: 100;
 `
 /*border-image-slice: 100 fill;*/
 
 export const CenterContainer = styled(GeneralStyles)`
-  border-style: solid;
+  border-style: dashed;
   border-width: 20px;
   border-image-slice: 40 ;
   border-image: linear-gradient(
@@ -58,6 +58,7 @@ export const RightContainer = styled(GeneralStyles)`
   border-image-source: url(${florid});
   border-image-slice: ${({ borderImgSlice }) => borderImgSlice};
   border-image-outset: ${({ borderImgOutset }) => borderImgOutset};
+  border-image-repeat: ${({ borderImgRepeat }) => borderImgRepeat};
 `
 /* border-image: repeating-linear-gradient(30deg, lime, aqua, blue, magenta 3px)
   30; */
@@ -106,6 +107,7 @@ export const ToolBoard = styled(BorderImageTool)`
 
 export const BoprderImgWidthInput = styled.input.attrs((props) => ({
   type: "Range",
+  min:"1",
   max: "100",
   size: props.size || "10px",
 }))`

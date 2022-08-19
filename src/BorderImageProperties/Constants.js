@@ -10,3 +10,5 @@ export const WIDTH_INITIAL_VALUE = 20
 export const OUTSET_INITIAL_VALUE = 0
 export const DEGREE_INITIAL_VALUE = 0
 export const SLICE_INITIAL_VALUE = 5
+
+export const BORDER_IMAGE_REPEAT = "BORDER_IMAGE_REPEAT"

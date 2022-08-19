@@ -2,18 +2,22 @@ import React, { useState } from "react"
 import * as Styled from "./Styled"
 import baby from "./Img/baby.jpg"
 import footballer from "./Img/picture.jpg"
-import { BORDER_IMG_REPEAT_VALUES } from "./Constants"
 import { BorderImgWidth } from "./BorderImgWidth"
 import { BorderImgOutset } from "./BorderImageOutset"
 import { LinearGradientDeg } from "./LinearGradientDegree"
 import { BorderImgSlice } from "./BorderImgSlice"
-
+import { RepeatSelect } from "./BorderImgRepeat"
 import {
   WIDTH_INITIAL_VALUE,
   OUTSET_INITIAL_VALUE,
   DEGREE_INITIAL_VALUE,
   SLICE_INITIAL_VALUE,
 } from "./Constants"
+import { useDispatch, useSelector } from "react-redux"
+import {
+  borderImageRepeatResult,
+  editImageRepeatValue,
+} from "../Redux/BorderImgRepeat"
 
 export const Container = () => {
   const [borderImgWidth, setBorderImgWidth] = useState(WIDTH_INITIAL_VALUE)
@@ -22,16 +26,23 @@ export const Container = () => {
     useState(DEGREE_INITIAL_VALUE)
   const [borderImgSlice, setBorderImgSlice] = useState(SLICE_INITIAL_VALUE)
 
+  const dispatch = useDispatch()
+
+  const borderImgValue = useSelector(borderImageRepeatResult)
   return (
     <Styled.Container>
       <Styled.ViewBoard>
-        <Styled.LeftContainer borderImgWidth={borderImgWidth}>
+        <Styled.LeftContainer
+          borderImgRepeat={borderImgValue}
+          borderImgWidth={borderImgWidth}
+        >
           <Styled.Img src={baby} alt="alt" />
         </Styled.LeftContainer>
         <Styled.CenterContainer linearGradientDeg={linearGradientDeg}>
           <Styled.Img src={footballer} alt="alt" />
         </Styled.CenterContainer>
         <Styled.RightContainer
+          borderImgRepeat={borderImgValue}
           borderImgSlice={borderImgSlice}
           borderImgOutset={borderImgOutset}
         >
@@ -60,16 +71,11 @@ export const Container = () => {
           setLinearGradientDeg={setLinearGradientDeg}
         />
 
-        <Styled.BorderImageTool>
-          <Styled.Paragraph>repeat</Styled.Paragraph>
-          <Styled.BorderImgRepeatSelect>
-            {BORDER_IMG_REPEAT_VALUES.map((option, i) => (
-              <option key={i} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </Styled.BorderImgRepeatSelect>
-        </Styled.BorderImageTool>
+        <RepeatSelect
+          onChange={(e) => {
+            dispatch(editImageRepeatValue(e.target.value))
+          }}
+        />
       </Styled.ToolBoard>
     </Styled.Container>
   )
