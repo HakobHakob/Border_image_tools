@@ -27,6 +27,7 @@ export const Container = () => {
   const [linearGradientDeg, setLinearGradientDeg] =
     useState(DEGREE_INITIAL_VALUE)
   const [borderImgSlice, setBorderImgSlice] = useState(SLICE_INITIAL_VALUE)
+
   const [checkedGradient, setCheckedGradient] = useState(RADIO_INPUTS_DATA)
 
 
@@ -55,8 +56,7 @@ export const Container = () => {
 
         <Gradients
           checkedGradient={checkedGradient}
-          setCheckedGradient={setCheckedGradient}
-         
+          setCheckedGradient={setCheckedGradient}         
         />
 
         <LinearGradientDeg

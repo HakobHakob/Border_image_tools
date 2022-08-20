@@ -124,7 +124,7 @@ export const LinearGradientRadio = styled.input.attrs((props) => ({
 }))`
   display: none;
   &:checked + ${GradientsRadioLabel} {
-    background-color: red;
+    background-color: #eee;
     color: #000;
     border: 1px solid #0fa0bd;
 
