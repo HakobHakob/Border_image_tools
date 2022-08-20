@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import babol from "./Img/babol.jpg"
 import florid from "./Img/florid-3.jpg"
 
 export const GeneralStyles = styled.div`
@@ -18,26 +17,28 @@ export const Container = styled.div`
 export const ViewBoard = styled(GeneralStyles)`
   border: 1px solid black;
 `
+export const BorderImageTool = styled.div`
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px;
+  margin: 10px;
+`
+export const ToolBoard = styled(BorderImageTool)`
+  display: flex;
+  border: 1px solid black;
+`
 export const Img = styled.img`
   max-width: 100%;
 `
-export const LeftContainer = styled(GeneralStyles)`
-  border-style: dotted;
-  border-width: 20px; 
-  border-image-source: url(${babol});
-  border-image-repeat: ${({ borderImgRepeat }) => borderImgRepeat};
-  border-image-slice: ${({ borderImgSlice }) => borderImgSlice};
-  border-image-outset: ${({ borderImgOutset }) => borderImgOutset};
-  border-image-width: ${({ borderImgWidth }) => borderImgWidth}px;
-`
-/*border-image-slice: 100 fill;*/
 
 export const CenterContainer = styled(GeneralStyles)`
   border-style: dashed;
   border-width: 20px;
-  border-image-slice: 40 ;
+  border-image-slice: 40;
   border-image: linear-gradient(
-    ${({ linearGradientDeg }) => linearGradientDeg}deg,
+      ${({ linearGradientDeg }) => linearGradientDeg}deg,
       red,
       yellow,
       lime,
@@ -64,17 +65,7 @@ export const RightContainer = styled(GeneralStyles)`
 `
 /* border-image: repeating-linear-gradient(30deg, lime, aqua, blue, magenta 3px)
   30; */
-/*fill*/
-
-export const BorderImageTool = styled.div`
-  border: 1px solid black;
-  border-radius: 10px;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 10px;
-  margin: 10px;
- 
-`
+/*border-image-slice: 100 fill;*/
 
 export const CheckBox = styled.input.attrs((props) => ({
   type: "checkbox",
@@ -102,14 +93,52 @@ export const Li = styled.li`
   align-items: center;
   margin-left: 10px;
 `
-export const ToolBoard = styled(BorderImageTool)`
-  border: 1px solid black;
-  width:250px;
+export const RadioButtonsTabs = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const GradientsRadioLabel = styled.label`
+   background-color: #eee;
+		border: 1px solid #ddd
+		color: #999;
+    cursor:pointer;
+		display: inline-block;
+		font-family: Arial;
+		font-size: 17px;
+		margin: 10px;
+		padding: 6px 12px;
+	
+		-moz-border-radius: 12px;
+		-webkit-border-radius: 12px;
+		border-radius: 12px;
+		-moz-box-shadow: #ccc 0 1px 1px;
+		-webkit-box-shadow: #ccc 0 1px 1px;
+		box-shadow: #ccc 0 1px 1px;
+
+`
+export const LinearGradientRadio = styled.input.attrs((props) => ({
+  type: "Radio",
+  size: props.size || "10px",
+}))`
+  display: none;
+  &:checked + ${GradientsRadioLabel} {
+    background-color: red;
+    color: #000;
+    border: 1px solid #0fa0bd;
+
+    -webkit-box-shadow: 0px 0px 9px #0fa0bd;
+    -moz-box-shadow: 0px 0px 9px #0fa0bd;
+    -ms-box-shadow: 0px 0px 9px #0fa0bd;
+    -o-box-shadow: 0px 0px 9px #0fa0bd;
+    box-shadow: 0px 0px 9px #0fa0bd;
+  }
 `
 
 export const BoprderImgWidthInput = styled.input.attrs((props) => ({
   type: "Range",
-  min:"1",
+  min: "1",
   max: "100",
   size: props.size || "10px",
 }))`
@@ -122,6 +151,7 @@ export const BoprderImgWidthInput = styled.input.attrs((props) => ({
 `
 export const BoprderImgOutsetInput = styled.input.attrs((props) => ({
   type: "Range",
+  step: 0.1,
   min: "0",
   max: "3",
   size: props.size || "10px",

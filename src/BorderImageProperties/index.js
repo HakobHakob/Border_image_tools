@@ -7,11 +7,13 @@ import { BorderImgOutset } from "./BorderImageOutset"
 import { LinearGradientDeg } from "./LinearGradientDegree"
 import { BorderImgSlice } from "./BorderImgSlice"
 import { RepeatSelect } from "./BorderImgRepeat"
+import { Gradients } from "./Gradients"
 import {
   WIDTH_INITIAL_VALUE,
   OUTSET_INITIAL_VALUE,
   DEGREE_INITIAL_VALUE,
   SLICE_INITIAL_VALUE,
+  RADIO_INPUTS_DATA,
 } from "./Constants"
 import { useDispatch, useSelector } from "react-redux"
 import {
@@ -25,38 +27,17 @@ export const Container = () => {
   const [linearGradientDeg, setLinearGradientDeg] =
     useState(DEGREE_INITIAL_VALUE)
   const [borderImgSlice, setBorderImgSlice] = useState(SLICE_INITIAL_VALUE)
+  const [checkedGradient, setCheckedGradient] = useState(RADIO_INPUTS_DATA)
+
+
+
 
   const dispatch = useDispatch()
 
   const borderImgValue = useSelector(borderImageRepeatResult)
   return (
     <Styled.Container>
-      <Styled.ViewBoard>
-        <Styled.LeftContainer
-          borderImgRepeat={borderImgValue}
-          borderImgWidth={borderImgWidth}
-          borderImgSlice={borderImgSlice}
-          borderImgOutset={borderImgOutset}
-        >
-          <Styled.Img src={baby} alt="alt" />
-        </Styled.LeftContainer>
-
-
-
-        <Styled.CenterContainer linearGradientDeg={linearGradientDeg}>
-          <Styled.Img src={footballer} alt="alt" />
-        </Styled.CenterContainer>
-        <Styled.RightContainer
-           borderImgRepeat={borderImgValue}
-           borderImgWidth={borderImgWidth}
-           borderImgSlice={borderImgSlice}
-           borderImgOutset={borderImgOutset}
-        >
-          <Styled.Img src={baby} alt="alt" />
-        </Styled.RightContainer>
-      </Styled.ViewBoard>
       <Styled.ToolBoard>
-        <Styled.Paragraph>border-image-tools</Styled.Paragraph>
         <BorderImgWidth
           borderImgWidth={borderImgWidth}
           setBorderImgWidth={setBorderImgWidth}
@@ -72,6 +53,12 @@ export const Container = () => {
           setBorderImgSlice={setBorderImgSlice}
         />
 
+        <Gradients
+          checkedGradient={checkedGradient}
+          setCheckedGradient={setCheckedGradient}
+         
+        />
+
         <LinearGradientDeg
           linearGradientDeg={linearGradientDeg}
           setLinearGradientDeg={setLinearGradientDeg}
@@ -83,6 +70,21 @@ export const Container = () => {
           }}
         />
       </Styled.ToolBoard>
+
+      <Styled.ViewBoard>
+        <Styled.CenterContainer linearGradientDeg={linearGradientDeg}>
+          <Styled.Img src={footballer} alt="alt" />
+        </Styled.CenterContainer>
+
+        <Styled.RightContainer
+          borderImgRepeat={borderImgValue}
+          borderImgWidth={borderImgWidth}
+          borderImgSlice={borderImgSlice}
+          borderImgOutset={borderImgOutset}
+        >
+          <Styled.Img src={baby} alt="alt" />
+        </Styled.RightContainer>
+      </Styled.ViewBoard>
     </Styled.Container>
   )
 }
