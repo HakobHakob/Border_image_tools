@@ -2,34 +2,33 @@ export const BORDER_IMG_REPEAT_VALUES = [
   { value: "stretch", label: "Stretch" },
   { value: "repeat", label: "Repeat" },
   { value: "round", label: "Round" },
-  { value: "Space", label: "Space" },
+  { value: "space", label: "Space" },
   { value: "inherit", label: "Inherit" },
 ]
 
-export const RADIO_INPUTS_IDS = [
-  "linearGradient",
-  "RadialGradient",
-  "ConicGradient",
-]
+
 
 export const RADIO_INPUTS_DATA = [
   {
     id: "linearGradient",
-    placeholder: "Linear",
-    checked: false,
+    value: "Linear",
+    checked:false,
     name: "radioInput",
+    gradientType:"linear-gradient",
   },
   {
     id: "RadialGradient",
-    placeholder: "Radial",
-    checked: false,
+    value: "Radial",
+    checked:false,
     name: "radioInput",
+    gradientType:"radial-gradient",
   },
   {
     id: "ConicGradient",
-    placeholder: "Conic",
-    checked: false,
+    value: "Conic",
+    checked:false,
     name: "radioInput",
+    gradientType:"conic-gradient",
   },
 ]
 

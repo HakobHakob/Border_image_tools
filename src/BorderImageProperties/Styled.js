@@ -36,18 +36,13 @@ export const Img = styled.img`
 export const CenterContainer = styled(GeneralStyles)`
   border-style: dashed;
   border-width: 20px;
-  border-image-slice: 40;
-  border-image: linear-gradient(
-      ${({ linearGradientDeg }) => linearGradientDeg}deg,
-      red,
-      yellow,
-      lime,
-      aqua,
-      blue,
-      magenta,
-      red
-    )
-    1 round;
+  margin:${(props) => console.log(props,'props')};
+  border-image-source: url(${florid}); 
+  border-image-width: ${({ borderImgWidth }) => borderImgWidth}px;
+  border-image-repeat: ${({ borderImgRepeat }) => borderImgRepeat};
+  border-image-slice: ${({ borderImgSlice }) => borderImgSlice};
+  border-image-outset: ${({ borderImgOutset }) => borderImgOutset};
+
 `
 
 /*1 0 inherit,stretch,round,space,repeat*/
@@ -125,7 +120,6 @@ export const LinearGradientRadio = styled.input.attrs((props) => ({
   display: none;
   &:checked + ${GradientsRadioLabel} {
     background-color: #eee;
-    color: #000;
     border: 1px solid #0fa0bd;
 
     -webkit-box-shadow: 0px 0px 9px #0fa0bd;
@@ -133,7 +127,7 @@ export const LinearGradientRadio = styled.input.attrs((props) => ({
     -ms-box-shadow: 0px 0px 9px #0fa0bd;
     -o-box-shadow: 0px 0px 9px #0fa0bd;
     box-shadow: 0px 0px 9px #0fa0bd;
-  }
+  
 `
 
 export const BoprderImgWidthInput = styled.input.attrs((props) => ({
@@ -180,6 +174,8 @@ export const LinearGradientInput = styled.input.attrs((props) => ({
   max: "360",
   size: props.size || "10px",
 }))`
+  display: ${(props) =>
+    props.radioInputsData[0].checked === false ? "none" : "block"};
   cursor: pointer;
   font-size: 10px;
   border: 2px solid palevioletred;

@@ -1,49 +1,41 @@
 import React, { useState } from "react"
 import * as Styled from "./Styled"
-import { RADIO_INPUTS_IDS } from "./Constants"
+import { RADIO_INPUTS_DATA } from "./Constants"
 
-export const Gradients = ({ checkedGradient, setCheckedGradient }) => {
-  // const [checked, setChecked] = useState(false)
+export const Gradients = () => {
 
-  const changeInputCheckedStatus = (inputId,checked) => {
-    // setChecked(!poghos)
 
-    console.log(inputId, "id")
-    const clonedData = [...checkedGradient]
-
-    setCheckedGradient(
-      RADIO_INPUTS_IDS.map((id) => {
-        if (id === inputId) {
-          return { ...clonedData, checked: !checked }
-        } else {
-          return clonedData
-        }
-      })
+  const [radioInputsData, setRadioInputsData] = useState(RADIO_INPUTS_DATA)
+  
+  const changeInputCheckedStatus = (id) => {
+    const clonedData = [...radioInputsData]
+    setRadioInputsData(
+      clonedData.map((clonedInput) =>
+        clonedInput.checked === true || clonedInput.id === id
+          ? { ...clonedInput, checked: !clonedInput.checked }
+          : clonedInput
+      )
     )
   }
-
   return (
     <Styled.BorderImageTool>
       <Styled.Paragraph>gradients</Styled.Paragraph>
 
-   
-        {checkedGradient.map((input, index) => {
-          return (
-            <Styled.RadioButtonsTabs key={index}>
-            <Styled.GradientsRadioLabel htmlFor={input.id}  >
-              {input.placeholder}
-              <Styled.LinearGradientRadio
-                id={input.id}
-                checked={input.checked}
-                name={input.name}
-                value={input.placeholder}
-                onChange={() => changeInputCheckedStatus(input.id,input.checked)}
-              />
+      {radioInputsData.map((inputData, index) => {
+        return (
+          <Styled.RadioButtonsTabs key={index}>
+            <Styled.LinearGradientRadio
+              id={inputData.id}
+              checked={inputData.checked}
+              name={inputData.name}
+              onChange={() => changeInputCheckedStatus(inputData.id)}
+            />
+            <Styled.GradientsRadioLabel htmlFor={inputData.id}>
+              {inputData.value}
             </Styled.GradientsRadioLabel>
-            </Styled.RadioButtonsTabs>
-          )
-        })}
-      
+          </Styled.RadioButtonsTabs>
+        )
+      })}
     </Styled.BorderImageTool>
   )
 }
