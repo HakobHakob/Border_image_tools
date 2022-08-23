@@ -6,13 +6,14 @@ import { LinearGradientDeg } from "./LinearGradientDegree"
 import { BorderImgSlice } from "./BorderImgSlice"
 import { RepeatSelect } from "./BorderImgRepeat"
 import { Gradients } from "./Gradients"
+import { ColorForGradients } from "./AddColorToGradients"
 import { RADIO_INPUTS_DATA } from "./Constants"
 import { Context } from "./Context"
 import * as Styled from "./Styled"
 
 export const ToolBoardSection = ({ data, onChange }) => {
   const [radioInputsData, setRadioInputsData] = useState(RADIO_INPUTS_DATA)
-  
+
   return (
     <>
       <Styled.Container>
@@ -36,8 +37,9 @@ export const ToolBoardSection = ({ data, onChange }) => {
               data={data}
               changeData={onChange}
             />
+            <ColorForGradients />
 
-            <RepeatSelect />
+            <RepeatSelect data={data} changeData={onChange} />
           </Styled.ToolBoard>
         </Context.Provider>
       </Styled.Container>

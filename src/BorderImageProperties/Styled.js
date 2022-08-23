@@ -33,6 +33,56 @@ export const Img = styled.img`
   max-width: 100%;
 `
 
+export const Button = styled.button`
+  color: "white";
+  cursor: pointer;
+  font-size: 17px;
+  margin: 10px;
+  padding: 5px 15px;
+  border: 2px solid lightblue;
+  border-radius: 5px;
+`
+
+export const ColorInputBoard = styled.div`
+  background: white;
+  box-shadow: 1em 1em 1em rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+`
+export const ColorInputRow = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+`
+
+export const GradientColorInput = styled.input.attrs((props) => ({
+  type: "color",
+  size: props.size || "10px",
+}))`
+  background-color: #eee;
+  border: 1px solid #0fa0bd;
+
+  -webkit-box-shadow: 0px 0px 9px #0fa0bd;
+  -moz-box-shadow: 0px 0px 9px #0fa0bd;
+  -ms-box-shadow: 0px 0px 9px #0fa0bd;
+  -o-box-shadow: 0px 0px 9px #0fa0bd;
+  box-shadow: 0px 0px 9px #0fa0bd;
+`
+
+export const DeleteColorInputRow = styled.div`
+  background-color: pink;
+  color: white;
+  border: 1px solid #0fa0bd;
+  border-radius: 3px;
+  box-shadow: 0px 0px 9px #0fa0bd;
+  padding: 3px 5px;
+  font-size: 10px;
+`
+
 export const CenterContainer = styled(GeneralStyles)`
   border-style: dashed;
   border-width: 20px;
@@ -41,19 +91,18 @@ export const CenterContainer = styled(GeneralStyles)`
   border-image-repeat: ${({ borderImgRepeat }) => borderImgRepeat};
   border-image-slice: ${({ borderImgSlice }) => borderImgSlice};
   border-image-outset: ${({ borderImgOutset }) => borderImgOutset};
-  border-image: linear-gradient(
-      ${({ linearGradientDeg }) => linearGradientDeg}deg,
-      red,
-      yellow,
-      lime,
-      aqua,
-      blue,
-      magenta,
-      red
-    )
-    1 stretch;
 `
-
+/*border-image: linear-gradient(
+  ${({ linearGradientDeg }) => linearGradientDeg}deg,
+  red,
+  yellow,
+  lime,
+  aqua,
+  blue,
+  magenta,
+  red
+)
+1 stretch;*/
 /*  border-image-source: url(${florid}); */
 /*1 0 inherit,stretch,round,space,repeat*/
 /* border-image: radial-gradient(rgb(0, 143, 104), rgb(250, 224, 66)) 1; */

@@ -1,6 +1,6 @@
 import React from "react"
 import * as Styled from "./Styled"
-import footballer from "./Img/picture.jpg"
+import footballer from "./Img/baby.jpg"
 
 import { RADIO_INPUTS_DATA } from "./Constants"
 import { useSelector } from "react-redux"
