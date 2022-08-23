@@ -36,15 +36,25 @@ export const Img = styled.img`
 export const CenterContainer = styled(GeneralStyles)`
   border-style: dashed;
   border-width: 20px;
-  margin:${(props) => console.log(props,'props')};
-  border-image-source: url(${florid}); 
+  border-image-source: url(${florid});
   border-image-width: ${({ borderImgWidth }) => borderImgWidth}px;
   border-image-repeat: ${({ borderImgRepeat }) => borderImgRepeat};
   border-image-slice: ${({ borderImgSlice }) => borderImgSlice};
   border-image-outset: ${({ borderImgOutset }) => borderImgOutset};
-
+  border-image: linear-gradient(
+      ${({ linearGradientDeg }) => linearGradientDeg}deg,
+      red,
+      yellow,
+      lime,
+      aqua,
+      blue,
+      magenta,
+      red
+    )
+    1 stretch;
 `
 
+/*  border-image-source: url(${florid}); */
 /*1 0 inherit,stretch,round,space,repeat*/
 /* border-image: radial-gradient(rgb(0, 143, 104), rgb(250, 224, 66)) 1; */
 /* border-image: conic-gradient(red, yellow, lime, aqua, blue, magenta, red) 1; */

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 
 import { BorderImgWidth } from "./BorderImgWidth"
 import { BorderImgOutset } from "./BorderImageOutset"
@@ -7,45 +7,39 @@ import { BorderImgSlice } from "./BorderImgSlice"
 import { RepeatSelect } from "./BorderImgRepeat"
 import { Gradients } from "./Gradients"
 import { RADIO_INPUTS_DATA } from "./Constants"
-
+import { Context } from "./Context"
 import * as Styled from "./Styled"
 
 export const ToolBoardSection = ({ data, onChange }) => {
-
-
- 
-
-  const borderImgWidth = data.borderImageWidth
-  const borderImageOutset = data.borderImageOutset
-  const linearGradientDeg = data.linearGradientDeg
-  const borderImageSlice = data.borderImageSlice
-
+  const [radioInputsData, setRadioInputsData] = useState(RADIO_INPUTS_DATA)
+  
   return (
     <>
       <Styled.Container>
-        <Styled.ToolBoard>
-          <BorderImgWidth data={data} some={onChange} />
+        <Context.Provider
+          value={{
+            radioInputsData,
+          }}
+        >
+          <Styled.ToolBoard>
+            <BorderImgWidth data={data} changeData={onChange} />
+            <BorderImgOutset data={data} changeData={onChange} />
+            <BorderImgSlice data={data} changeData={onChange} />
 
-          <BorderImgOutset
-            borderImageOutset={borderImageOutset}
-            onChange={onChange}
-          />
+            <Gradients
+              radioInputsData={radioInputsData}
+              setRadioInputsData={setRadioInputsData}
+            />
 
-          <BorderImgSlice
-            borderImageSlice={borderImageSlice}
-            onchange={onChange}
-          />
+            <LinearGradientDeg
+              radioInputsData={radioInputsData}
+              data={data}
+              changeData={onChange}
+            />
 
-          <Gradients />
-
-          <LinearGradientDeg
-            radioInputsData={RADIO_INPUTS_DATA}
-            linearGradientDeg={linearGradientDeg}
-            onchange={onChange}
-          />
-
-          <RepeatSelect />
-        </Styled.ToolBoard>
+            <RepeatSelect />
+          </Styled.ToolBoard>
+        </Context.Provider>
       </Styled.Container>
     </>
   )

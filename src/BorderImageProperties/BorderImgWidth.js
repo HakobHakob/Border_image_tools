@@ -1,19 +1,21 @@
-import React, { useState } from "react"
+import React, { useContext } from "react"
 import * as Styled from "./Styled"
+import { Context } from "./Context"
 
-export const BorderImgWidth = ({ data, some }) => {
+export const BorderImgWidth = ({ data, changeData }) => {
+  const { radioInputsData } = useContext(Context)
   const borderImageWidth = data.borderImageWidth
-
-
   return (
-    <Styled.BorderImageTool>
+    <Styled.BorderImageTool radioInputsData={radioInputsData}>
       <Styled.Paragraph>width</Styled.Paragraph>
       <Styled.BoprderImgWidthInput
+        radioInputsData={radioInputsData}
         value={borderImageWidth}
-        onChange={(e) => some({ ...data, borderImageWidth: e.target.value })}
+        onChange={(e) =>
+          changeData({ ...data, borderImageWidth: e.target.value })
+        }
       />
       <Styled.Paragraph>{`${borderImageWidth} px`}</Styled.Paragraph>
     </Styled.BorderImageTool>
   )
 }
-// onChange={(e) => setItem({ ...item, series: e.target.value })}

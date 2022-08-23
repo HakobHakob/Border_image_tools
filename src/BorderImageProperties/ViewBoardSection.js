@@ -7,14 +7,7 @@ import { useSelector } from "react-redux"
 import { borderImageRepeatResult } from "../Redux/BorderImgRepeat"
 
 export const ViewBoardSection = (data) => {
-
-
- 
-
   const borderImgWidth = data.styledData.borderImageWidth
-
-  console.log(borderImgWidth, "data")
-
   const borderImgOutset = data.styledData.borderImageOutset
   const linearGradientDeg = data.styledData.linearGradientDeg
   const borderImgSlice = data.styledData.borderImageSlice
@@ -25,11 +18,11 @@ export const ViewBoardSection = (data) => {
     <>
       <Styled.Container>
         <Styled.CenterContainer
+          borderImgWidth={borderImgWidth}
+          borderImgOutset={borderImgOutset}
+          borderImgSlice={borderImgSlice}
           linearGradientDeg={linearGradientDeg}
           radioInputsData={radioInputsData}
-          borderImgSlice={borderImgSlice}
-          borderImgOutset={borderImgOutset}
-          borderImgWidth={borderImgWidth}
           borderImgRepeat={borderImgValue}
         >
           <Styled.Img src={footballer} alt="alt" />

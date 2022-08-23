@@ -1,12 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import * as Styled from "./Styled"
-import { RADIO_INPUTS_DATA } from "./Constants"
-
-export const Gradients = () => {
 
 
-  const [radioInputsData, setRadioInputsData] = useState(RADIO_INPUTS_DATA)
-  
+export const Gradients = ({radioInputsData,setRadioInputsData}) => {
+
+
+
   const changeInputCheckedStatus = (id) => {
     const clonedData = [...radioInputsData]
     setRadioInputsData(

@@ -1,15 +1,21 @@
-import React from "react"
+import React,{useContext} from "react"
 import * as Styled from "./Styled"
+import { Context } from "./Context"
 
-export const BorderImgOutset = ({borderImgOutset,setBorderImgOutset}) => {
+export const BorderImgOutset = ({data,changeData}) => {
+  const {radioInputsData} = useContext(Context)
+  const borderImageOutset = data.borderImageOutset
   return (
-    <Styled.BorderImageTool>
+    <Styled.BorderImageTool
+    radioInputsData = {radioInputsData}
+    >
       <Styled.Paragraph>outset</Styled.Paragraph>
       <Styled.BoprderImgOutsetInput
-        value={borderImgOutset}
-        onChange={(e) => setBorderImgOutset(e.target.value)}
+       radioInputsData={radioInputsData}
+        value={borderImageOutset}
+        onChange={(e) => changeData({ ...data, borderImageOutset: e.target.value })}
       />
-      <Styled.Paragraph>{`Outset length is: ${borderImgOutset}`}</Styled.Paragraph>
+      <Styled.Paragraph>{`Outset length is: ${borderImageOutset}`}</Styled.Paragraph>
     </Styled.BorderImageTool>
   )
 }
