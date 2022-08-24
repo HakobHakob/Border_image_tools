@@ -2,46 +2,53 @@ import React, { useState } from "react"
 import * as Styled from "./Styled"
 
 export const ColorForGradients = () => {
-  const [colorInputsNumber, setColorInputsNumber] = useState([])
+  const [colors, setColors] = useState([])
 
   const addColorInput = () => {
-    setColorInputsNumber([...colorInputsNumber, colorInputsNumber.length + 1])
+    setColors([...colors,"#000000"])
   }
 
-  const removeColorInput = (number,index) => {
+  const removeColorInput = ( index) => {
 
-    colorInputsNumber[index] = number
+    colors.splice(index, 1)
+    setColors([...colors])
+  }
 
-    colorInputsNumber.splice(index)
-
-    setColorInputsNumber([...colorInputsNumber])
-    console.log(index, "index")
-    console.log(number, "num")
+  const colorPicker = (index, e) => {
+    colors[index] = index
+    setColors((colors) => {
+      colors[index] = e.target.value
+      return [...colors]
+    })
   }
 
   return (
-    <Styled.BorderImageTool>
-      <Styled.Paragraph>gradient's color</Styled.Paragraph>
+    <>
+     
+      <Styled.BorderImageTool>
+        <Styled.Paragraph>gradient's color</Styled.Paragraph>
 
-      <Styled.Button onClick={addColorInput}>Add</Styled.Button>
+        <Styled.Button onClick={addColorInput}>Add</Styled.Button>
 
-      {colorInputsNumber.map((inputNumber, index) => {
-        return (
-          <>
-            <Styled.ColorInputBoard>
-              <Styled.ColorInputRow key={index}>
-                <Styled.GradientColorInput />
+        {colors.map((color, index) => {
+          return (
+            <Styled.ColorInputBoard key={index}>
+              <Styled.ColorInputRow>
+
+                <Styled.GradientColorInput
+                  value={color}
+                  onChange={(e) => colorPicker(index, e)}
+                />
                 <Styled.DeleteColorInputRow
-                  key={index}
-                  onClick={() => removeColorInput(inputNumber,index)}
+                  onClick={() => removeColorInput(index)}
                 >
                   x
                 </Styled.DeleteColorInputRow>
               </Styled.ColorInputRow>
             </Styled.ColorInputBoard>
-          </>
-        )
-      })}
-    </Styled.BorderImageTool>
+          )
+        })}
+      </Styled.BorderImageTool>
+    </>
   )
 }
